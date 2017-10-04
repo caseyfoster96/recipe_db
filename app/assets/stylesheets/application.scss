@@ -1,16 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-html {
-    background-color: #FFF8DC !important;
-}
-
 .recipe-box {
 	height: 600px;
 	width: relative;
 	position: relative;
 	box-shadow: 10px 10px 5px #888888;
-	background: #ccffff ;
+	background: #ccffff;
 	margin-bottom: 20px;
 }
 
