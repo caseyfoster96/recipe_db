@@ -1,8 +1,9 @@
+<div class="recipe_form">
+<div class="recipe_form_text">
 <%= form_with(model: recipe, local: true) do |form| %>
   <% if recipe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
       <ul>
       <% recipe.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,24 +11,37 @@
       </ul>
     </div>
   <% end %>
+<div class="row"> 
+<br>
+<div class="col-md-6">  
+  <div class="form-group">
+    <%= form.file_field :image %>
+    <% if @recipe.image? %>
+      <%= image_tag @recipe.image.url, class: "recipe-show" %>
+      <%= form.check_box :remove_image %>
+        Remove Image
+    <% end %>
+ </div>
+</div><!--/col md 4-->
 
+<div class="col-md-6"> 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :recipe_title %>
+    <h3><%= form.label :title %>
+    <%= form.text_field :title, id: :recipe_title %></h3>
+  </div>
+  <div class="field">
+    <h3><%= form.label :description %>
+    <%= form.text_area :description, id: :recipe_description %></h3>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :recipe_description %>
-  </div>
-
-  
+ 
   <div class="form-group">
    <h3>Add Ingredients</h3>
     <%= form.nested_fields_for :ingredients do |ingredient| %>
       <%= ingredient.text_field :content %>
       <%= ingredient.remove_nested_fields_link %>
-    <% end %>
+    
+	<% end %>
       <%= form.add_nested_fields_link :ingredients %>
   </div>
 
@@ -39,8 +53,12 @@
     <% end %>
       <%= form.add_nested_fields_link :steps %>
   </div>
-  
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit Recipe", class: "btn btn-info" %>
   </div>
 <% end %>
+<br>
+</div><!--/col md 6-->
+</div><!--/row-->
+</div><!--/recipe_form_text-->
+</div><!--recipe_form close-->

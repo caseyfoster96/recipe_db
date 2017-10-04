@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RecipeDb</title>
+    <title>Casey's Recipes</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application.css', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application.js', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Merriweather" rel="stylesheet">
   </head>
 
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded"> 
+  <%= link_to "Casey's Recipes", root_path, class: 'navbar-brand' %>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav navbar-right">
+      <li><%= link_to "About", pages_about_path %></li>
+      <li><%= link_to "Privacy", pages_privacy_path %></li>
+    </ul>
+  </div>
+</nav>  
+  
   <body>
     <%= yield %>
   </body>
+
 </html>
